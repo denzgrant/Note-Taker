@@ -3,7 +3,7 @@ const path = require("path");
 
 const app = express(); 
 app.use(express.static(path.join(__dirname, '/public')));
-const PORT = process.env.PORT || 8000 ; 
+const PORT = process.env.PORT || 8888 ; 
 
 
 app.use(express.json());
@@ -11,11 +11,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public")); 
 
 
-
 app.get("/", function (req, res) {
-    // console.log(`/ called`);
-    // res.sendFile(path.join(__dirname, "/public/index.html"));
-    res.send("Hello World")
+    console.log(`/index called`);
+    res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 app.get("/notes", function (req, res) {
@@ -25,5 +23,5 @@ app.get("/notes", function (req, res) {
 
 
 app.listen(PORT, () => {
-    console.log(`Server listening on https://localhost:${PORT}`);
+    console.log(`Server listening on http://localhost:${PORT}`);
 })

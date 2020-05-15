@@ -49,14 +49,14 @@ app.delete("/api/notes/:id", (req, res) => {
 
     fs.readFile('./db/db.json', (err, data) => {
         if (err) throw err;
-       let savedNotes = res.json(db);
+        let savedNotes = res.json(db);
         for (let savedNoteId of db) {
-            if (db[i].id === dbId) {
-                console.log(db[i]);
-                return res.json(db[i]);
+            if (savedNotes[i].id === dbId) {
+                console.log(savedNoteId);
+                return res.json(savedNoteId);
             }
-        }    
-        fs.writeFile("./db/db.json", db )    
+        }
+        //     fs.writeFile("./db/db.json", savedNoteId)
     })
 });
 

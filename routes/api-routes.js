@@ -10,11 +10,12 @@ module.exports = (app) => {
     const readFileAsync = util.promisify(fs.readFile);
 
     app.get("/api/notes", (req, res) => {
+        console.log("test");
         readFileAsync("./db/db.json", "utf8")
             .then((notes) => {
-                console.log(notes); 
+                console.log(notes);
                 db = JSON.parse(notes);
-                return res.json(db);
+                res.json(db);
             })
             .catch((err) => res.status(500).json(err));
     });
